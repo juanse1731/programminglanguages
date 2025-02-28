@@ -2,6 +2,10 @@
 
 #1. Funciones son ciudadanos de primer orden: Parametros. retornos, asignar variables
 
+#Conceptos de programacion funcional
+
+#1. Funciones son ciudadanos de primer orden: Parametros. retornos, asignar variables
+
 from functools import reduce
 
 import math
@@ -132,12 +136,28 @@ n = int(input("ingrese el numero de terminos"))
 nums = list(range(1,n+1))
 print(nums)
 
+#funcion para calcular cada termino de la serie de mclaurin que aproxima es:
 def fun_map(n):
-    pass
+    return (1/factorial(n))
+
+#funcion que calcula la sumatoria de toda la lista sumando los terminos por pares
 
 def fun_redux(a,b):
-    pass
+    return a+b
 
-aprox = reduce(fun_redux, list(map(fun_map, nums)))
-print(f"valor aproximado para euler")
+#aplica la funcion dentro de la sumatoria a cada termino 0 a lim:
+termino1 = list(map(fun_map, nums))
 
+#aproxima e^1 sumando todos los terminos
+aprox = reduce(fun_redux, termino1)
+
+print(f"valor aproximado de e con {lim} terminos:{aprox}")
+
+#como aproximar e a lax?
+
+x = int(input("ingrese x:"))
+
+terminos2 = list(map(lambda n:fun_map_1(n,x), nums))
+aprox2 = reduce(fun_redux, terminos2)
+
+print(f"valor aproximado de e^{x}:{aprox2}")
